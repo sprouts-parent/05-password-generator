@@ -90,12 +90,15 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+// length of password (10 to 64 characters)
+//character types (lowercase, UPPERCASE, Numeric, Special Characters) (true or false)
+//at least one character type selected otherwise code will not run
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+//Math.random for selected (if statements?) arrays (* array.length) needs to be limited depending on password length entered by user 
+//for loop
 }
 
 // Function to generate password with user input
@@ -103,6 +106,7 @@ function generatePassword() {
 
 }
 
+//------------------------------------------------------
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
