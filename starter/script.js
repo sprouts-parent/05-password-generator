@@ -88,12 +88,39 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+var passwordChoices = {
+  characterAmount: "",
+  getSpecialCharacters: false,
+  getNumeric: false,
+  getUpper: false,
+  getLower: false
+} //create object variable from user preferences to use in later code
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-// length of password (10 to 64 characters)
-//character types (lowercase, UPPERCASE, Numeric, Special Characters) (true or false)
-//at least one character type selected otherwise code will not run
+  characterAmount = prompt("Enter the number of characters you require in your password (between 10 and 64 characters):");
+  console.log(characterAmount);
+    if (characterAmount <= 9 || characterAmount > 64) {
+      prompt("Your password length does not meet requirements, please pick a number between 10 and 64!"); // length of password (10 to 64 characters)
+    }
+  //character types (lowercase, UPPERCASE, Numeric, Special Characters) (true or false)
+  getSpecialCharacters = confirm("Would you like to include special characters in your password?");
+  console.log(getSpecialCharacters);
+  getNumeric = confirm("Would you like to include numbers in your password?");
+  console.log(getNumeric);
+  getUpper = confirm("Would you like to include UPPERCASE letters in your password?");
+  console.log(getUpper);
+  getLower = confirm("Would you like to include lowercase letters in your password?");
+  console.log(getLower);
+  //at least one character type selected otherwise code will not run
+    if (getSpecialCharacters != true && getNumeric != true && getUpper != true && getLower != true)  {
+      alert("You must select at least one option to generate your password!");
+      return getPasswordOptions();
+    }
+
 }
+
+getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom(arr) {
