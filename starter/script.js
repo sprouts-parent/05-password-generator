@@ -87,23 +87,71 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
-
+//my code starts here -------------------------------------------------------------------------
+var passwordChoices = {
+  characterAmount: "",
+  getSpecialCharacters: false,
+  getNumeric: false,
+  getUpper: false,
+  getLower: false
+} //create object variable from user preferences to use in later code
+var possibleCharacters = [];
 // Function to prompt user for password options
 function getPasswordOptions() {
-// length of password (10 to 64 characters)
-//character types (lowercase, UPPERCASE, Numeric, Special Characters) (true or false)
-//at least one character type selected otherwise code will not run
+  characterAmount = prompt("Enter the number of characters you require in your password (between 10 and 64 characters):");
+  characterAmount = parseInt(characterAmount);
+  console.log("characterAmount = ", characterAmount);
+  if (Number.isNaN(characterAmount)){
+    alert("The password length must be a number. Please retry and enter a value number between 10 and 64:");
+    getPasswordOptions();
+  }
+    console.log(characterAmount);
+      if (characterAmount <= 9 || characterAmount > 64) {
+        prompt("Your password length does not meet requirements, please pick a number between 10 and 64!"); // length of password (10 to 64 characters)
+      }
+  //character types (lowercase, UPPERCASE, Numeric, Special Characters) (booleans)
+  getSpecialCharacters = confirm("Would you like to include special characters in your password?");
+    console.log(getSpecialCharacters);
+    if (getSpecialCharacters) {
+      possibleCharacters = possibleCharacters.concat(specialCharacters);
+    }
+  getNumeric = confirm("Would you like to include numbers in your password?");
+    console.log(getNumeric);
+    if (getNumeric) {
+      possibleCharacters = possibleCharacters.concat(numericCharacters);
+    }
+  getUpper = confirm("Would you like to include UPPERCASE letters in your password?");
+    console.log(getUpper);
+    if (getUpper) {
+      possibleCharacters = possibleCharacters.concat(upperCasedCharacters);
+    }
+  getLower = confirm("Would you like to include lowercase letters in your password?");
+    console.log(getLower);
+    if (getLower) {
+      possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
+    }
+  console.log("Possible characters = ", possibleCharacters);
+  //at least one character type selected otherwise code will not run
+      if (getSpecialCharacters != true && getNumeric != true && getUpper != true && getLower != true)  {
+        alert("You must select at least one option to generate your password!");
+        return getPasswordOptions();
+      }
 }
+getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+return arr[Math.floor(Math.random() * arr.length)];
+     //for loop grabs character amount inputted by user
 //Math.random for selected (if statements?) arrays (* array.length) needs to be limited depending on password length entered by user 
-//for loop
+
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  for (let i = 0; i < characterAmount; i++) {
 
+  }
 }
 
 //------------------------------------------------------
