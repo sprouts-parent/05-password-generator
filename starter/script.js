@@ -88,23 +88,27 @@ var upperCasedCharacters = [
   'Z'
 ];
 //my code starts here -------------------------------------------------------------------------
-var passwordChoices = {
-  characterAmount: "",
-  getSpecialCharacters: false,
-  getNumeric: false,
-  getUpper: false,
-  getLower: false
-} //create object variable from user preferences to use in later code
-var possibleCharacters = [];
-// Function to prompt user for password options
-function getPasswordOptions() {
-  characterAmount = prompt("Enter the number of characters you require in your password (between 10 and 64 characters):");
-  characterAmount = parseInt(characterAmount);
-  console.log("characterAmount = ", characterAmount);
-  if (Number.isNaN(characterAmount)){
-    alert("The password length must be a number. Please retry and enter a value number between 10 and 64:");
+//declaring variables to be used in subsequent functions
+  var characterAmount;
+  var getSpecialCharacters;
+  var getNumeric;
+  var getUpper;
+  var getLower; 
+  var possibleCharacters;
+
+function getPasswordOptions() { // Function to prompt user for password options
+  characterAmount = 0;
+  getSpecialCharacters = false;
+  getNumeric = false;
+  getUpper = false;
+  getLower = false;
+    characterAmount = prompt("Enter the number of characters you require in your password (between 10 and 64 characters):");
+    characterAmount = parseInt(characterAmount);
+      console.log("characterAmount = ", characterAmount);
+    if (Number.isNaN(characterAmount)){ // added in case user inputs letters/special characters
+    alert("The password length must be a number. Please retry and enter a numeric value between 10 and 64:");
     getPasswordOptions();
-  }
+    }
     console.log(characterAmount);
       if (characterAmount <= 9 || characterAmount > 64) {
         prompt("Your password length does not meet requirements, please pick a number between 10 and 64!"); // length of password (10 to 64 characters)
@@ -137,21 +141,22 @@ function getPasswordOptions() {
         return getPasswordOptions();
       }
 }
-getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-return arr[Math.floor(Math.random() * arr.length)];
-     //for loop grabs character amount inputted by user
-//Math.random for selected (if statements?) arrays (* array.length) needs to be limited depending on password length entered by user 
-
+return arr[Math.floor(Math.random() * arr.length)];     
+//Math.random for selected arrays (* array.length) limited depending on password length entered by user 
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  possibleCharacters = [];
+  getPasswordOptions();
+  var randomPassword = "";
   for (let i = 0; i < characterAmount; i++) {
-
-  }
+    randomPassword += getRandom(possibleCharacters);
+  } //for loop grabs character amount inputted by user
+  return randomPassword;
 }
 
 //------------------------------------------------------
