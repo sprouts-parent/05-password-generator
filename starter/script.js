@@ -107,18 +107,18 @@ function getPasswordOptions() { // Function to prompt user for password options
       console.log("characterAmount = ", characterAmount);
     if (Number.isNaN(characterAmount)){ // added in case user inputs letters/special characters
     alert("The password length must be a number. Please retry and enter a numeric value between 10 and 64:");
-    getPasswordOptions();
+    return getPasswordOptions();
     }
-    console.log(characterAmount);
       if (characterAmount <= 9 || characterAmount > 64) {
-        prompt("Your password length does not meet requirements, please pick a number between 10 and 64!"); // length of password (10 to 64 characters)
+        alert("Your password length does not meet requirements, please pick a number between 10 and 64!"); // length of password (10 to 64 characters)
+        return getPasswordOptions();
       }
   //character types (lowercase, UPPERCASE, Numeric, Special Characters) (booleans)
   getSpecialCharacters = confirm("Would you like to include special characters in your password?");
     console.log(getSpecialCharacters);
-    if (getSpecialCharacters) {
+    if (getSpecialCharacters) { 
       possibleCharacters = possibleCharacters.concat(specialCharacters);
-    }
+    } // using .concat to join two strings for password generation to make a new one without affecting original
   getNumeric = confirm("Would you like to include numbers in your password?");
     console.log(getNumeric);
     if (getNumeric) {
