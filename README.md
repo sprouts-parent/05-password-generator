@@ -22,7 +22,7 @@ N/A
 
 ## Usage
 
-To view the financial analysis of the dataset, follow the link to the deployed page: https://sprouts-parent.github.io/05-password-generator/ 
+To view the password generator, follow the link to the deployed page: https://sprouts-parent.github.io/05-password-generator/ 
 
 From there, just open the console within the inspector and you will see the print out of results.
 
